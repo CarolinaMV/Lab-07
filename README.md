@@ -26,6 +26,8 @@
         1. nombresProductosPedido
         2. valorTotalPedido - El resultado final lo debe retornar la base de datos, no se deben hacer operaciones en memoria.
         3. registrarNuevoProducto - Use su código de estudiante para evitar colisiones.
+     
+     ok
 
 **8.** Verifique por medio de un cliente SQL, que la información retornada por el programa coincide con la que se encuentra almacenada en base de datos.
 
