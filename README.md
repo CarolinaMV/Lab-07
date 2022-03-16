@@ -40,3 +40,6 @@ Para verificar la información retornada nos conectamos a la base bdprueba utili
 
 **2.** Seguir las instrucciones que se encuentran en el repositorio de forma que en la clase MyBatisExample.java se creen los mappers necesarios y sea posible realizar la              ejecución de diferentes sentencias SQL en la base de datos de pruebas.
 
+#### Parte I (Para entregar en clase):
+
+
