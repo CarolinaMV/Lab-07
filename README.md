@@ -31,6 +31,9 @@
 
 **8.** Verifique por medio de un cliente SQL, que la información retornada por el programa coincide con la que se encuentra almacenada en base de datos.
 
+Para verificar la información retornada nos conectamos a la base bdprueba utilizando DBeaver:
+![1](https://user-images.githubusercontent.com/79550161/158707521-101082f2-c02e-4065-873b-2a1a0edc143c.JPG)
+
 ### SECCIÓN II. - INTRODUCCIÓN A MYBATIS
 
 **1.** Revise la documentación básica de MyBatis de forma que entienda para qué sirve y el uso básico que se le puede dar al framework.
