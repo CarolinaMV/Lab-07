@@ -56,6 +56,10 @@
         left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
         WHERE c.documento = #{idcli}
     </select>
+  
+    <insert parameterType="map" id="agregarItemRentadoACliente">
+	     INSERT INTO VI_ITEMRENTADO(CLIENTES_documento, ITEMS_id, fechainiciorenta, fechafinrenta) VALUES (#{idIr}, #{iditIr},#{fechainicioIr}, #{fechafinIr})
+    </insert>
 
     <resultMap type='Cliente' id='ClienteResult'>
         <id property='documento' column='documento'/>
