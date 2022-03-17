@@ -33,7 +33,6 @@
 
 Para verificar la información retornada nos conectamos a la base bdprueba utilizando DBeaver:
 ![1](https://user-images.githubusercontent.com/79550161/158707521-101082f2-c02e-4065-873b-2a1a0edc143c.JPG)
-![2](https://user-images.githubusercontent.com/79550161/158739407-d79f2800-1a40-41b0-841b-70d6f3616b73.JPG)
 
 Pruebas
 ![image](https://user-images.githubusercontent.com/98135902/158833611-9370ea4c-fc81-42bd-b33f-b8907cae99e3.png)
