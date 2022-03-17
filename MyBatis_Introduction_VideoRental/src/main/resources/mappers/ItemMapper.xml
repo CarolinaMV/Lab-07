@@ -50,16 +50,6 @@
   <insert parameterType="map" id="insertarItem">
 	  INSERT INTO VI_ITEMS VALUES(#{itemI.id}, #{itemI.nombre}, #{itemI.descripcion}, #{itemI.fechaLanzamiento}, #{itemI.tarifaxDia}, #{itemI.formatoRenta}, #{itemI.genero}, #{itemI.tipo.id});
   </insert>
-  
-  <resultMap type='Item' id='ItemResult'>
-    <id property='id' column='id_item'/>
-    <result property='nombre' column='nombre'/>
-    <result property='descripcion' column='itemDescrip'/>
-    <result property='fechaLanzamiento' column='fechalanzamiento'/>
-    <result property='tarifaxDia' column='tarifaxdia'/>
-    <result property='formatoRenta' column='formatorenta'/>
-    <result property='genero' column='genero'/>
-    <association property='tipo' javaType='TipoItem' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>
-  </resultMap>    
+ 
     
 </mapper>
