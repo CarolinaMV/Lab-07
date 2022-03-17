@@ -141,24 +141,26 @@ public class JDBCExample {
     public static int valorTotalPedido(Connection con, int codigoPedido){
         int costoTotal=0;
         //Crear prepared statement
-        PreparedStatement totalPedido = null;
-        String calcularTotal = "SELECT SUM(op2.precio * odp.cantidad) AS total\n" +
+
+        String select = "SELECT SUM(op2.precio * odp.cantidad) AS total\n" +
                 "FROM ORD_PRODUCTOS op2 \n" +
                 "JOIN ORD_DETALLE_PEDIDO odp \n" +
                 "ON op2.codigo = odp.producto_fk \n" +
                 "JOIN ORD_PEDIDOS op \n" +
                 "ON odp.pedido_fk = op.codigo\n" +
                 "WHERE op.codigo = 1;";
-        try {
-            totalPedido=con.prepareStatement(calcularTotal);
-            //asignar parámetros
-            totalPedido.setInt(1, codigoPedido);
-            //usar executeQuery
-            ResultSet costo = totalPedido.executeQuery();
-            //Sacar resultado del ResultSet
-            while (costo.next()){
-                costoTotal=costo.getInt("total");
+        try(PreparedStatement preparedStatement = con.prepareStatement(select); ) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                costoTotal = resultSet.getInt("total");
             }
+            //totalPedido=con.prepareStatement(calcularTotal);
+            //asignar parámetros
+            //totalPedido.setInt(1, codigoPedido);
+            //usar executeQuery
+            //ResultSet costo = totalPedido.executeQuery();
+            //Sacar resultado del ResultSet
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
