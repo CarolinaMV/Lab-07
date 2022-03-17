@@ -50,5 +50,11 @@ Para verificar la información retornada nos conectamos a la base bdprueba utili
 ![4](https://user-images.githubusercontent.com/79550161/158739295-74c6f5c2-a7a4-4f6a-8883-e0b4785fcff3.JPG)
 
 * Punto 7:
+
+![6](https://user-images.githubusercontent.com/79550161/158742998-597e02f5-e3ad-4783-b28d-042dfba5ac70.JPG)
+
+#### Parte II (para el Miércoles)
+
+* Punto 2 y 3:
 ![5](https://user-images.githubusercontent.com/79550161/158742333-5a37e167-308d-49d8-81a4-77f1141d9f1e.JPG)
 
