@@ -42,4 +42,7 @@ Para verificar la información retornada nos conectamos a la base bdprueba utili
 
 #### Parte I (Para entregar en clase):
 
+* Puntos hasta el 5:
+![3](https://user-images.githubusercontent.com/79550161/158737857-747c3524-b1f0-451a-88bf-414b8dd7e0ff.JPG)
 
+*Punto 6:
