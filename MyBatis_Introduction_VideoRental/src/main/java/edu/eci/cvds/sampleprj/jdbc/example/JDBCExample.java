@@ -16,11 +16,7 @@
  */
 package edu.eci.cvds.sampleprj.jdbc.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -57,8 +53,8 @@ public class JDBCExample {
             System.out.println("-----------------------");
 
 
-            int suCodigoECI=20134423;
-            registrarNuevoProducto(con, suCodigoECI, "SU NOMBRE", 99999999);
+            //int suCodigoECI=20134423;
+            //registrarNuevoProducto(con, suCodigoECI, "SU NOMBRE", 99999999);
             con.commit();
 
 
@@ -105,18 +101,32 @@ public class JDBCExample {
         List<String> np=new LinkedList<>();
 
         //Crear prepared statement
-        PreparedStatement consultarProducto = null;
-        consultarProducto = con.prepareStatement("SELECT nombre FROM ORD_PRODUCTOS pro, ORD_DETALLE_PEDIDO ped WHERE ?=ped.pedido_fk AND ped.producto_fk=pro.codigo;");
+
+        String select = "SELECT nombre FROM ORD_PRODUCTOS op\n" +
+                "JOIN ORD_DETALLE_PEDIDO odp \n" +
+                "ON odp.producto_fk = op.codigo\n" +
+                "JOIN ORD_PEDIDOS op2 \n" +
+                "ON odp.pedido_fk = op2.codigo \n" +
+                "WHERE op2.codigo = 1;";
+        try(PreparedStatement preparedStatement = con.prepareStatement(select); ){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String nombreProducto=resultSet.getString("nombre");
+                np.add(nombreProducto);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        //System.out.println(consultarProducto);
         //asignar parámetros
-        consultarProducto.setInt(1, codigoPedido);
+        //asignar parámetros
+        //consultarProducto.setInt(1, codigoPedido);
         //usar executeQuery
-        ResultSet nombre = consultarProducto.executeQuery();
+
         //Sacar resultados del ResultSet
         //Llenar la lista y retornarla
-        while (nombre.next()){
-            String nombreProducto=nombre.getString("nombre");
-            np.add(nombreProducto);
-        }
+
 
         return np;
     }
@@ -132,7 +142,13 @@ public class JDBCExample {
         int costoTotal=0;
         //Crear prepared statement
         PreparedStatement totalPedido = null;
-        String calcularTotal = "SELECT SUM(precio*cantidad) AS total FROM ORD_DETALLE_PEDIDO ped, ORD_PRODUCTOS pro WHERE ped.pedido_fk=? AND ped.producto_fk=pro.codigo;";
+        String calcularTotal = "SELECT SUM(op2.precio * odp.cantidad) AS total\n" +
+                "FROM ORD_PRODUCTOS op2 \n" +
+                "JOIN ORD_DETALLE_PEDIDO odp \n" +
+                "ON op2.codigo = odp.producto_fk \n" +
+                "JOIN ORD_PEDIDOS op \n" +
+                "ON odp.pedido_fk = op.codigo\n" +
+                "WHERE op.codigo = 1;";
         try {
             totalPedido=con.prepareStatement(calcularTotal);
             //asignar parámetros

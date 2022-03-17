@@ -4,6 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper">
+  
+  <select parameterType="map" id="consultarItems" resultMap="ItemResult">
+    select
+    
+    i.id as id_item ,
+    i.nombre ,
+    i.descripcion as itemDescrip,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero , 
+       
+    ti.id as id_tipoItem,
+    ti.descripcion 
 
     <select parameterType="map" id="consultarItems" resultMap="ItemResult">
         select
@@ -18,19 +32,6 @@
         left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
     </select>
 
-    <select parameterType="map" id="consultarItem" resultMap="ItemResult">
-        select
-        i.id as id,
-        i.nombre as i_nombre,
-        i.descripcion,
-        i.fechalanzamiento,
-        i.tarifaxdia,
-        i.formatorenta,
-        i.genero,
-        FROM VI_ITEMS as i
-        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
-        WHERE i.id = #{idItem}
-    </select>
 
     <insert parameterType="map" id="insertarItem" >
         INSERT INTO VI_ITEMS(id, nombre, descripcion, fechalanzamiento, tarifaxdia, formatorenta, genero, TIPOITEM_id)
@@ -48,6 +49,30 @@
         <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper.TipoItemResult" columnPrefix="ti_"/>
     </resultMap>
 
+  
+  <select parameterType="map" id="consultarItem" resultMap="ItemResult">
+    select
     
+    i.id as id_item ,
+    i.nombre ,
+    i.descripcion as itemDescrip,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero , 
+       
+    ti.id as id_tipoItem,
+    ti.descripcion 
+
+    FROM 
+    left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+	
+    WHERE
+    i.id = #{itemId}
+	
+  </select>
+
+
     
 </mapper>
