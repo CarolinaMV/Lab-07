@@ -46,3 +46,4 @@ Para verificar la información retornada nos conectamos a la base bdprueba utili
 ![3](https://user-images.githubusercontent.com/79550161/158737857-747c3524-b1f0-451a-88bf-414b8dd7e0ff.JPG)
 
 *Punto 6:
+![4](https://user-images.githubusercontent.com/79550161/158739295-74c6f5c2-a7a4-4f6a-8883-e0b4785fcff3.JPG)
