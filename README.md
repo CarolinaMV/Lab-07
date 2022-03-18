@@ -43,7 +43,7 @@ Pruebas
 * valorTotalPedido
 ![image](https://user-images.githubusercontent.com/98135902/158833670-ffe2801d-e57d-4965-a575-8ec24ab25072.png)
 
-
+* registrarNuevoProducto
 
 
 
